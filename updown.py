@@ -20,7 +20,7 @@ if sys.version.startswith('2'):
 import dropbox
 
 # OAuth2 access token.  TODO: login etc.
-TOKEN = 'wlUl37ItLqQAAAAAAAAAAUsvN-XrnMs5zcAc5UClCAg6RietQOpQ4sLGoLTjdhQ7'
+TOKEN = 'fzGKAI2TU6wAAAAAAAAAAQjP2w9F9mD6GSFa0sTRzQNuId_TT3q37p9AvhBHZs3L'
 
 parser = argparse.ArgumentParser(description='Sync ~/Downloads to Dropbox')
 parser.add_argument('folder', nargs='?', default='Downloads',

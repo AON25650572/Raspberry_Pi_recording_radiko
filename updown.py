@@ -190,6 +190,23 @@ def upload(dbx, fullname, folder, subfolder, name, overwrite=False):
     print('uploaded as', res.name.encode('utf8'))
     return res
 
+# 削除もできるようにしちゃおう
+# download の受け売りだから返り値とかは適当
+def delete(dbx, folder, subfolder, name):
+    """Delete a file.
+    """
+    path = '/%s/%s/%s' % (folder, subfolder.replace(os.path.sep, '/'), name)
+    while '//' in path:
+        path = path.replace('//', '/')
+    with stopwatch('delete'):
+        try:
+            md = dbx.files_delete(path)
+        except dropbox.exceptions.HttpError as err:
+            print('*** HTTP error', err)
+            return None
+    #print(len(data), 'bytes; md:', md)
+    return md
+
 def yesno(message, default, args):
     """Handy helper function to ask a yes/no question.
 
